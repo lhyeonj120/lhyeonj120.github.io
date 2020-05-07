@@ -11,18 +11,15 @@
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
     <script>
-        AFRAME.registerComponent ( 'code-to-set-attribute', {
-          init : function() {
-            navigator.geolocation.getCurrentPosition((position) => {
+        window.onload = () => {                       navigator.geolocation.getCurrentPosition((position) => {
           document.querySelector('a-entity').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
         });
-       }
-     });
+     }
    </script>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
-    <a-scene code-to-set-attribute
+    <a-scene
         vr-mode-ui="enabled: false"
       embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
