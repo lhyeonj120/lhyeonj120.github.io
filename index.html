@@ -17,9 +17,8 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
-      <a-entity camera look-controls>
-            <a-entity id="box" geometry="primitive: box" material="color: red"></a-entity>
-      </a-entity>
+      <a-entity gltf-model="./assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: 126.698825; latitude: 37.421999;" animation-mixer/></a-entity>
+
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
   </body>
