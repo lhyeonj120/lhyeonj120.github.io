@@ -11,57 +11,20 @@
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
     <script>
-// Place Object 저장 배열 생성
-const loadPlaces = function () {
-    const PLACES = [
-          {
-              name: "GS25",
-              location: {
-                  lat: 37.421992,
-                  lng: 126.698902,
-              },
-          }
-    ];
-    return Promise.resolve(PLACES);
-}
-
-// Place Object 추가
-window.onload = () => {
-    const scene = document.querySelector('a-scene');
-    return navigator.geolocation.getCurrentPosition(function (position) {
-        console.log("현재 내위치는 : " +position.coords.latitude+", 경도: " + position.coords.longitude + "에 있습니다");
-        loadPlaces()
-            .then((places) => {
-                places.forEach((place) => {
-                    const latitude = place.location.lat;
-                    const longitude = place.location.lng;
-
-                    const icon = document.createElement('a-image');
-                    icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
-                    icon.setAttribute('src', '/arrow.png');
-                    icon.setAttribute('scale', '10, 10');
-                    scene.appendChild(icon);
-                });
-            })
-        },
-        (err) => console.error('Error in retrieving position', err),
-        {
-            enableHighAccuracy: true,
-            maximumAge: 0,
-            timeout: 27000,
-        }
-    );
-};
-</script>
+      window.onload = () => {                       navigator.geolocation.getCurrentPosition((position) => {
+        document.querySelector('a-entity').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+      });
+     }
+   </script>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
-  <a-scene
-      debug
-      cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
-      raycaster="objects: [gps-entity-place];"
-      vr-mode-ui="enabled: false"
+    <a-scene
+        vr-mode-ui="enabled: false"
       embedded
-      arjs='sourceType: webcam; sourceWidth:1080; sourceHeight:764; displayWidth: 1080; displayHeight: 764; debugUIEnabled: false;'>
-  </a-scene>
+        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+        <a-camera gps-camera rotation-reader>
+          <a-entity gltf-model="./assets/magnemite/scene.gltf" scale="0.15 0.15 0.15"/>
+        </a-camera>
+   </a-scene>
 </body>
