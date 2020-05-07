@@ -11,19 +11,48 @@
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
     <script>
-        function getLocation() {
-            if (navigator.geolocation) { // GPS를 지원하면
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    alert(position.coords.latitude + ' ' + position.coords.longitude);
-                }, function(error) {
-                    console.error(error);
+// Place Object 저장 배열 생성
+const loadPlaces = function () {
+    const PLACES = [
+          {
+              name: "GS25",
+              location: {
+                  lat: 37.421992,
+                  lng: 126.698902,
+              },
+          }
+    ];
+    return Promise.resolve(PLACES);
+}
+
+// Place Object 추가
+window.onload = () => {
+    const scene = document.querySelector('a-scene');
+    return navigator.geolocation.getCurrentPosition(function (position) {
+        console.log("현재 내위치는 : " +position.coords.latitude+", 경도: " + position.coords.longitude + "에 있습니다");
+        loadPlaces()
+            .then((places) => {
+                places.forEach((place) => {
+                    const latitude = place.location.lat;
+                    const longitude = place.location.lng;
+
+                    const icon = document.createElement('a-image');
+                    icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
+                    icon.setAttribute('src', '/arrow.png');
+                    icon.setAttribute('scale', '10, 10');
+                    scene.appendChild(icon);
                 });
-            } else {
-            alert('GPS를 지원하지 않습니다');
-            }
+            })
+        },
+        (err) => console.error('Error in retrieving position', err),
+        {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: 27000,
         }
-        getLocation();
-    </script>
+    );
+};
+</script>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
