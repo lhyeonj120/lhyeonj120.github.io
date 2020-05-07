@@ -6,7 +6,6 @@
     <title>GeoAR.js demo</title>
     <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
@@ -18,7 +17,7 @@
 		embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
         
-	<a-entity gltf-model="./assets/magnemite/scene.gltf" look-at="[gps-camera]" scale="0.15 0.15 0.15" gps-entity-place="longitude: 126.698830; latitude: 37.422076;"/>
+	<a-entity gltf-model="./assets/magnemite/scene.gltf" camera look-controls position="0 1.6 0" look-at="[gps-camera]" scale="0.15 0.15 0.15" gps-entity-place="longitude: 126.698830; latitude: 37.422076;"/>
 
         <a-camera gps-camera rotation-reader></a-camera>
 	</a-scene>
