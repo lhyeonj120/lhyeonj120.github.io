@@ -11,11 +11,9 @@
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
     <script>
-      setTimeout(function () {
         window.onload = () => {                       navigator.geolocation.getCurrentPosition((position) => {
           document.querySelector('a-entity').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
         });
-      }, 8000);
      }
    </script>
 </head>
