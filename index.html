@@ -10,12 +10,11 @@
     <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
-    <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
     <script>
-        $(document).ready(() => {                       navigator.geolocation.getCurrentPosition((position) => {
+        window.addEventListener('DOMContentLoaded', () => {                       navigator.geolocation.getCurrentPosition((position) => {
           document.querySelector('a-entity').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
         });
-     });
+     }))
    </script>
 </head>
 
