@@ -10,7 +10,6 @@
     <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
-    <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
@@ -18,8 +17,8 @@
         vr-mode-ui="enabled: false"
 		embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-        <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type='barcode' value='6'>
-        <a-entity id="animated-model" gltf-model="./assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: 126.698825; latitude: 37.421999;" animation-mixer/>
+        <a-entity camera look-controls>
+          <a-entity gltf-model="./assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: 126.698825; latitude: 37.421999;" animation-mixer/>
 
         <a-camera gps-camera rotation-reader></a-camera>
 	</a-scene>
