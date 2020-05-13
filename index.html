@@ -26,8 +26,10 @@
         <a-assets>
           <a-asset-item id="scene-gltf" src="./assets/magnemite/scene.gltf"></a-asset-item>
         </a-assets>
-        <a-camera gps-camera rotation-reader>
-          <a-entity gltf-model="#scene-gltf" look-at="[gps-camera]" scale="0.15 0.15 0.15"/>
-        </a-camera>
+
+
+          <a-entity gltf-model="#scene-gltf" position="0 0 0" scale="0.15 0.15 0.15"/>
+          <a-camera gps-camera rotation-reader>
+          </a-camera>
    </a-scene>
 </body>
