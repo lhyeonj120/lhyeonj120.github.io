@@ -26,8 +26,8 @@
         <a-assets timeout="10000">
           <a-asset-item id="scene" src="./assets/magnemite/scene.gltf"></a-asset-item>
         </a-assets>
-        <a-entity gps-camera rotation-reader>
-          <a-entity gltf-model="#scene" position="0 100 0" look-at="[gps-camera]" scale="0.1 0.1 0.1"/>
+        <a-entity gps-camera look-controls rotation-reader>
+          <a-entity gltf-model="#scene" look-at="[gps-camera]" scale="0.1 0.1 0.1"/>
         </a-entity>
    </a-scene>
 </body>
