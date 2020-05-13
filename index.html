@@ -11,10 +11,13 @@
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
     <script>
-        window.onload = function(){navigator.geolocation.getCurrentPosition(function(position){
+        /*window.onload = function(){navigator.geolocation.getCurrentPosition(function(position){
           document.querySelector('#up').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
         });
-     }
+     }*/
+     $(document).ready(function(){navigator.geolocation.getCurrentPosition(function(position){
+       document.querySelector('#up').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+     });
    </script>
 </head>
 
@@ -28,7 +31,7 @@
           <!--<a-asset-item id="scene" src="./assets/magnemite/scene.gltf"></a-asset-item>-->
         </a-assets>
         <a-entity gps-camera look-controls rotation-reader>
-          <a-image src="#up" look-at="[gps-camera]" scale="0.5 0.5 0.5" position="0 1 0"></a-image>
+          <a-image src="#up" position="0 1 0" look-at="[gps-camera]" scale="0.5 0.5 0.5"></a-image>
           <!--<a-entity gltf-model="#scene" look-at="[gps-camera]" scale="0.1 0.1 0.1"/>-->
         </a-entity>
    </a-scene>
