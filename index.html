@@ -12,7 +12,7 @@
     </script>
     <script>
         window.onload = function(){navigator.geolocation.getCurrentPosition(function(position){
-          document.querySelector('a-entity').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+          document.querySelector('#scene').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
         });
      }
    </script>
@@ -24,10 +24,10 @@
       embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
         <a-assets timeout="10000">
-          <a-asset-item id="scene-gltf" src="./assets/magnemite/scene.gltf"></a-asset-item>
+          <a-asset-item id="scene" src="./assets/magnemite/scene.gltf"></a-asset-item>
         </a-assets>
-        <a-camera gps-camera look-controls rotation-reader>
-          <a-entity gltf-model="#scene-gltf" rotation="0 180 0" look-at="[gps-camera]" scale="0.15 0.15 0.15"/>
-        </a-camera>
+        <a-entity gps-camera look-controls rotation-reader>
+          <a-entity gltf-model="#scene" rotation="0 180 0" look-at="[gps-camera]" scale="0.15 0.15 0.15" animation-mixer/>
+        </a-entity>
    </a-scene>
 </body>
