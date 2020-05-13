@@ -16,7 +16,7 @@
         });
      }*/
      $(document).ready(function(){navigator.geolocation.getCurrentPosition(function(position){
-       document.querySelector('#up').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+       document.querySelector('#navi').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
      });
    </script>
 </head>
@@ -27,11 +27,11 @@
       embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
         <a-assets>
-          <img id="up" src="./assets/magnemite/up.png">
+          <img id="navi" src="./assets/magnemite/up.png">
           <!--<a-asset-item id="scene" src="./assets/magnemite/scene.gltf"></a-asset-item>-->
         </a-assets>
         <a-entity gps-camera look-controls rotation-reader>
-          <a-image src="#up" position="0 1 0" look-at="[gps-camera]" scale="0.5 0.5 0.5"></a-image>
+          <a-image src="#navi" position="0 1 0" look-at="[gps-camera]" scale="0.5 0.5 0.5"></a-image>
           <!--<a-entity gltf-model="#scene" look-at="[gps-camera]" scale="0.1 0.1 0.1"/>-->
         </a-entity>
    </a-scene>
