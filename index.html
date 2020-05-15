@@ -10,22 +10,11 @@
     <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
-    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script>
-    $(function() {
-		// Geolocation API에 액세스할 수 있는지를 확인
-		if (navigator.geolocation) {
-			//위치 정보를 얻기
-			navigator.geolocation.getCurrentPosition(function(pos) {
-				alert(pos.coords.latitude + ' ' + pos.coords.longitude + ' ' + pos.coords.heading);
-			});
-		} else {
-			alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
-		}
-	});
         window.onload = function(){navigator.geolocation.getCurrentPosition(function(position){
-          document.querySelector('#up').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
           alert(position.coords.heading);
+          document.querySelector('#up').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+
         });
      }
      /*$(document).ready(function(){navigator.geolocation.getCurrentPosition(function(position){
