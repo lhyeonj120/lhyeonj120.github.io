@@ -15,7 +15,9 @@
           alert(position.coords.heading);
           document.querySelector('#up').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
 
-        });
+        }, function(error){
+        	 alert("error");
+         }, { enableHighAccuracy: true, maximumAge: 1000}); );
      }
      /*$(document).ready(function(){navigator.geolocation.getCurrentPosition(function(position){
        document.querySelector('#navi').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
