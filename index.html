@@ -12,7 +12,8 @@
     </script>
     <script>
         window.onload = function(){navigator.geolocation.getCurrentPosition(function(position){
-          document.querySelector('#up').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+          document.querySelector('#up').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+          			alert(position.coords.heading);
         });
      }
      /*$(document).ready(function(){navigator.geolocation.getCurrentPosition(function(position){
