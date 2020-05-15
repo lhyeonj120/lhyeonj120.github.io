@@ -13,9 +13,6 @@
     <script>
     window.onload = function(){navigator.geolocation.watchPosition(function(position){
       document.querySelector('#up').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
-      $('#latitude').attr('value', position.coords.latitude); // 위도
-      $('#longitude').attr('value', position.coords.longitude); // 경도
-  //$('#heading').attr('value', position.coords.heading); // 방향
       alert(position.coords.heading);
      }, function(error){
        alert("error");
