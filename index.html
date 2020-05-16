@@ -26,9 +26,9 @@
      $(document).ready(function(){navigator.geolocation.watchPosition(function(position){
        document.querySelector('#navi').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
        if(position.coords.heading == "")
-         $('#navi').attr('src', './assets/magnemite/straight.png');
+         $('#st').attr('visible', 'true');
        else {
-         $('#navi').attr('src', './assets/magnemite/back.png');
+         $('#back').attr('visible', 'true');
        }
        }, function(error){
         alert("error");
@@ -43,7 +43,8 @@
       embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
         <a-assets>
-          <img id="navi">
+          <img id="st" scr="./assets/magnemite/straight.png" visible="false">
+          <img id="back" scr="./assets/magnemite/back.png" visible="false">
           <!--<a-asset-item id="scene" src="./assets/magnemite/scene.gltf"></a-asset-item>-->
         </a-assets>
         <a-entity gps-camera look-controls rotation-reader>
