@@ -14,7 +14,7 @@
         window.onload = function(){navigator.geolocation.getCurrentPosition(function(position){
           alert(position.coords.heading);
           document.querySelector('#navi').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
-          if(heading == 0)
+          if(position.coords.heading == 0)
             $('#navi').attr('src', './assets/magnemite/straight.png');
           else {
             $('#navi').attr('src', './assets/magnemite/back.png');
