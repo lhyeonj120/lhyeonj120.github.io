@@ -9,7 +9,33 @@
     
     <!-- import events.js script -->
     <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
-    
+    <script>
+        /*window.onload = function(){navigator.geolocation.getCurrentPosition(function(position){
+          alert(position.coords.heading);
+          document.querySelector('#navi').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+          if(position.coords.heading == 0)
+            $('#navi').attr('src', './assets/magnemite/straight.png');
+          else {
+            $('#navi').attr('src', './assets/magnemite/back.png');
+          }
+        }, function(error){
+            alert("error");
+         }, { enableHighAccuracy: true, maximumAge: 1000}); );
+     }*/
+     $(document).ready(function(){navigator.geolocation.getCurrentPosition(function(position){
+       document.querySelector('#navi').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+       /*if(position.coords.heading == "")
+         $('#st').attr('visible', 'true');
+       else {
+         $('#back').attr('visible', 'true');
+       }*/
+       }, function(error){
+        alert("error");
+       }, { enableHighAccuracy: true, maximumAge: 1000});
+     });
+
+   </script>
+
     <body style='margin : 0px; overflow: hidden;'>
         <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
         <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
