@@ -10,6 +10,7 @@
     <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
+<script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
     <script>
         /*window.onload = function(){navigator.geolocation.getCurrentPosition(function(position){
           alert(position.coords.heading);
@@ -23,7 +24,7 @@
         	 alert("error");
          }, { enableHighAccuracy: true, maximumAge: 1000}); );
      }*/
-     $(document).ready(function(){navigator.geolocation.watchPosition(function(position){
+     /*$(document).ready(function(){navigator.geolocation.watchPosition(function(position){
        document.querySelector('#navi').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
        if(position.coords.heading == "")
          $('#st').attr('visible', 'true');
@@ -33,7 +34,19 @@
        }, function(error){
         alert("error");
        }, { enableHighAccuracy: true, maximumAge: 1000});
-     });
+     });*/
+	
+	AFRAME.registerComponent('markerhandler', {
+		init: function(){
+			const entity = document.querySeletor("#st");
+			entity.addEventListener('click', function(ev){
+				const scale = entity.getAttribute('scale');
+				scale += 1;
+				entity.setAttribute('scale', scale);
+			}
+		});
+	}});
+
    </script>
 </head>
 
@@ -44,12 +57,15 @@
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
         <a-assets>
           <img id="st" scr="./assets/magnemite/straight.png">
-          <img id="back" scr="./assets/magnemite/back.png">
+          <!--<img id="back" scr="./assets/magnemite/back.png">-->
           <!--<a-asset-item id="scene" src="./assets/magnemite/scene.gltf"></a-asset-item>-->
         </a-assets>
+
         <a-entity gps-camera look-controls rotation-reader>
-          <a-image src="#navi" position="0 1 0" look-at="[gps-camera]" scale="0.5 0.5 0.5"></a-image>
+	<a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="st" type='barcode' value='6'>
+          <a-image src="#st" position="0 1 0" look-at="[gps-camera]" scale="0.5 0.5 0.5"></a-image>
           <!--<a-entity gltf-model="#scene" look-at="[gps-camera]" scale="0.1 0.1 0.1"/>-->
+	</a-marker>
         </a-entity>
    </a-scene>
 </body>
